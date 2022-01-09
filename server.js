@@ -17,6 +17,8 @@ app.use(express.json())
 
 // router implementations
 app.use("/items", itemsRouter);
+app.get('/', (req, res) => { res.send('Hello from Express!')})
+
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
