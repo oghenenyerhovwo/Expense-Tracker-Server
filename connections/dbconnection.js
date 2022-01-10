@@ -4,17 +4,20 @@ const mongoose = require('mongoose');
 const databaseConnection = async () => {
     const dbUrl = process.env.MONGO_URI || 'mongodb://localhost:27017/expense_tracker';
 
-    await mongoose.connect(dbUrl, {
+    //Set up default mongoose connection
+    mongoose.connect(dbUrl, { 
         useNewUrlParser: true,
-        useCreateIndex: true,
         useUnifiedTopology: true,
-        useFindAndModify: false
-    });
-
+    })
+    
+    
+    //Get the default connection
     const db = mongoose.connection;
-    db.on("error", console.error.bind(console, "connection error:"));
+
+    //Bind connection to error event (to get notification of connection errors)
+    db.on("error", console.error.bind(console, "Connection error:"));
     db.once("open", () => {
-        console.log("Database connected");
+        console.log("Annunciation Database connected");
     });
 }
 
