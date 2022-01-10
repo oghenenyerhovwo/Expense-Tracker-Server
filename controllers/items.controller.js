@@ -5,7 +5,7 @@ const {itemValidation} = require("../validation/itemValidation")
 function getItems(req, res){
     Item.find()
         .then(items => res.status(200).json(items.reverse()))
-        .catch(err => res.status(400).json({ message: err}));
+        .catch(err => res.status(400).json({ message: "cannot "}));
 }
 
 function postItems(req, res){
