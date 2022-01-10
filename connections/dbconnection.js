@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 
-function databaseConnection () {
+const databaseConnection = async () => {
     const dbUrl = process.env.MONGO_URI || 'mongodb://localhost:27017/expense_tracker';
 
-    mongoose.connect(dbUrl, {
+    await mongoose.connect(dbUrl, {
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true,
