@@ -8,7 +8,7 @@ function getItems(req, res){
         .then(items => res.status(200).json(items))
         .catch(err => {
             console.log(err)
-            res.status(400).json({ message: err})});
+            res.status(400).json({ message: "Unable to get items"})});
 }
 
 function postItems(req, res){
@@ -19,7 +19,7 @@ function postItems(req, res){
         () => {
             Item.create(newItem)
                 .then(item => res.status(200).json(item))
-                .catch(err => res.status(400).json({ message: err}))
+                .catch(err => res.status(400).json({ message: "Unable to post item" }))
         }
     )
     
@@ -28,7 +28,7 @@ function postItems(req, res){
 function findAnItem(req, res){
     Item.findById(req.params.id)
         .then(item => res.status(200).json(item))
-        .catch(err => res.status(400).json({ message: err}));
+        .catch(err => res.status(400).json({ message: "Unable to find item" }));
 }
 
 const  updateAnItem =async (req, res) => {
@@ -45,7 +45,7 @@ const  updateAnItem =async (req, res) => {
                 const updateItem = await Item.findByIdAndUpdate(req.params.id, formItem, {new:true})
                 return res.status(200).json(updateItem)
             } catch (err) {
-                res.status(400).json({ message: err})
+                res.status(400).json({ message: "Unable to update item" })
             }
         }
     )
@@ -54,7 +54,7 @@ const  updateAnItem =async (req, res) => {
 function deleteAnItem(req, res){
     Item.findByIdAndDelete(req.params.id)
         .then(item => res.status(200).json(req.params.id))
-        .catch(err => res.status(400).json({ message: err}));
+        .catch(err => res.status(400).json({ message: "unable to delete item" }));
 }
 
 module.exports = {
