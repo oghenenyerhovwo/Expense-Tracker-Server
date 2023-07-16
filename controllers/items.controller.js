@@ -2,7 +2,7 @@
 const Item = require("../models/items.model")
 const {itemValidation} = require("../validation/itemValidation")
 
-function getItems = async (req, res) => {
+const getItems = async (req, res) => {
     try {
         const items = await Item.find({})
         res.status(200).send(items)
