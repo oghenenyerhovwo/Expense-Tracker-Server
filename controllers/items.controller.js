@@ -3,7 +3,7 @@ const Item = require("../models/items.model")
 const {itemValidation} = require("../validation/itemValidation")
 
 function getItems(req, res){
-    Item.find()
+    Item.find({})
         .then(items => res.status(200).json(items.reverse()))
         .catch(err => {
             console.log(err)
