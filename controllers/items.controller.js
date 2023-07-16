@@ -5,7 +5,7 @@ const {itemValidation} = require("../validation/itemValidation")
 const getItems = async (req, res) => {
     try {
         const items = await Item.find({})
-        res.status(200).send(items)
+        res.send(items)
     } catch (err) {
         res.status(400).send({ message: "Unable to get items" })
     }
