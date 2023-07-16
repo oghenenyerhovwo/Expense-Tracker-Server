@@ -3,8 +3,9 @@ const Item = require("../models/items.model")
 const {itemValidation} = require("../validation/itemValidation")
 
 function getItems(req, res){
-    Item.find({})
-        .then(items => res.status(200).json(items.reverse()))
+    Item
+        .find({})
+        .then(items => res.status(200).json(items))
         .catch(err => {
             console.log(err)
             res.status(400).json({ message: err})});
